@@ -8,25 +8,25 @@ import Results from "../components/Results";
 import styles from "../styles/Home.module.css";
 import requests from "../utils/requests";
 
-export default function Home(props) {
+export default function Home({ results }) {
   return (
-    <div className={styles.container}>
-      {console.log(props)}
+    <div>
       <Header />
       <Nav />
-      <Results />
+      <Results result={results} />
     </div>
   );
 }
-// export async function getServerSideProps(context) {
-const genre = context.query;
-//   // const request = await fetch(
-//   //   `https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=35`
-//   // ).then((res) => res.json());
-
-//   return {
-//     props: {
-//       results: genre,
-//     },
-//   };
-// }
+export async function getServerSideProps(context) {
+  const genre = context.query.genre;
+  const request = await fetch(
+    `https://api.themoviedb.org/3${
+      requests[genre]?.url || requests.fetchTrending.url
+    }`
+  ).then((res) => res.json());
+  return {
+    props: {
+      results: request.results,
+    },
+  };
+}
