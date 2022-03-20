@@ -22,13 +22,12 @@ const Thumbnail = ({ key, movie }) => {
           className="mt-1 text-2xl text-white
         transition-all duration-100 ease-in-out group-hover:font-bold"
         >
-          {" "}
-          {movie.original_name || movie.title}{" "}
+          {movie.original_name || movie.title}
         </h2>
 
         <p
-        // className="flex cursor-pointer items-center
-        //  opacity-0 group-hover:opacity-100 "
+          className="flex cursor-pointer items-center
+         opacity-0 group-hover:opacity-100 "
         >
           {movie.media_type && `${movie.media_type}`} {""}
           {movie.first_air_date || movie.release_date}

@@ -11,7 +11,7 @@ const Nav = () => {
           <h2
             className="cursor-pointer hover:text-white active:text-red-700 
              hover:scale-75 transition duration-100 transform "
-            onClick={() => router.push(`/?genre=${item.url}`)}
+            onClick={() => router.push(`/?genre=${key}`)}
             key={key}
           >
             {item.title}
