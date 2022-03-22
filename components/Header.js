@@ -23,7 +23,11 @@ const Header = () => {
       <h1
         className="text-4xl bg-gradient-to-r
          from-emerald-900 to-orange-400 bg-clip-text 
-          text-transparent h-full tracking-widest "
+          text-transparent h-full tracking-widest 
+            hover:bg-gradient-to-l duration-1000 hover:transition-all
+           
+         
+           "
       >
         wATcHIt
       </h1>

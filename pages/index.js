@@ -13,20 +13,30 @@ export default function Home({ results }) {
     <div>
       <Header />
       <Nav />
-      <Results result={results} />
+      <div>
+        <Results result={results} />
+      </div>
     </div>
   );
 }
 export async function getServerSideProps(context) {
   const genre = context.query.genre;
-  const request = await fetch(
-    `https://api.themoviedb.org/3${
-      requests[genre]?.url || requests.fetchTrending.url
-    }`
-  ).then((res) => res.json());
-  return {
-    props: {
-      results: request.results,
-    },
-  };
+  try {
+    const request = await fetch(
+      `https://api.themoviedb.org/3${
+        requests[genre]?.url || requests.fetchTrending.url
+      }`
+    ).then((res) => res.json());
+    return {
+      props: {
+        results: request.results,
+      },
+    };
+  } catch (error) {
+    return {
+      props: {
+        results: error,
+      },
+    };
+  }
 }

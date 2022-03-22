@@ -23,15 +23,13 @@ const Thumbnail = ({ key, movie }) => {
         transition-all duration-100 ease-in-out group-hover:font-bold"
         >
           {movie.original_name || movie.title}
-        </h2>
-
+        </h2>{" "}
         <p
           className="flex cursor-pointer items-center
          opacity-0 group-hover:opacity-100 "
         >
-          {movie.media_type && `${movie.media_type}`} {""}
+          {movie.media_type && `${movie.media_type}`}
           {movie.first_air_date || movie.release_date}
-          {""}
           <ThumbUpIcon className="h-5 mx-2 " /> {movie.vote_count}
         </p>
       </div>
