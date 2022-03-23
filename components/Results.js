@@ -3,19 +3,35 @@ import requests from "../utils/requests";
 import Thumbnail from "./Thumbnail";
 import { EmojiSadIcon } from "@heroicons/react/outline";
 import HeaderItem from "./HeaderItem";
+import { useState } from "react/cjs/react.development";
 const Results = ({ result }) => {
+  const [first, setFirst] = useState(0);
+
+  const scrollHandler = () => {
+    window.addEventListener("scroll", () => {
+      setFirst(window.scrollY);
+    });
+  };
+
   return (
     <>
-      {console.log(typeof result)}
+      {scrollHandler()}
 
-      {typeof result === "object" ? (
-        <div className=" px-5 my-10 sm:grid md:grid-cols-2 xl:grid-cols-3">
-          {result.map((item) => (
-            <Thumbnail key={item.id} movie={item} />
-          ))}
-          {/* <div className=" flex overflow-hidden justify-center items-center  ">
-   <EmojiSadIcon />
- </div> */}
+      {typeof result == "object" ? (
+        <div className="">
+          <div
+            className={first > 200 ? "  z-50 fixed  w-full mt-96 " : " hidden"}
+          >
+            <button
+              className="   w-12  h-12 float-right  mx-10     bg-slate-100    "
+              onClick={() => window.scrollTo(0, "100vh")}
+            />
+          </div>
+          <div className="  px-10 py-10  sm:grid md:grid-cols-2 xl:grid-cols-3   ">
+            {result.map((item) => (
+              <Thumbnail key={item.id} movie={item} />
+            ))}
+          </div>
         </div>
       ) : (
         <div

@@ -7,3 +7,6 @@
     @apply bg-[#06202A] text-gray-300;
   }
 }
+html {
+  scroll-behavior: smooth;
+}

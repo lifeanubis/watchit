@@ -1,16 +1,18 @@
+import dynamic from "next/dynamic";
 import Head from "next/head";
 import Image from "next/image";
 import Header from "../components/Header";
 import Nav from "../components/Nav";
 const API_KEY = process.env.API_KEY;
 
-import Results from "../components/Results";
 import styles from "../styles/Home.module.css";
 import requests from "../utils/requests";
 
+const Results = dynamic(() => import("../components/Results"), { ssr: false });
+
 export default function Home({ results }) {
   return (
-    <div>
+    <div className="overflow-x-hidden ">
       <Header />
       <Nav />
       <div>
@@ -35,7 +37,7 @@ export async function getServerSideProps(context) {
   } catch (error) {
     return {
       props: {
-        results: error,
+        results: error.json(),
       },
     };
   }

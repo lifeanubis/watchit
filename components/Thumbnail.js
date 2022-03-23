@@ -7,8 +7,8 @@ const Thumbnail = ({ key, movie }) => {
 
   return (
     <div
-      className="p-2 group cursor-pointer transition-all
-        duration-300  ease-in-out  transform sm:hover:scale-105 hover:z-50 "
+      className="p-2 group cursor-pointer transition-all scroll-smooth
+        duration-300  ease-in-out  transform sm:hover:scale-105 hover:z-10 "
     >
       <Image
         height={1080}
